@@ -85,7 +85,7 @@ class GitHubService {
 
   // Menampilkan article detail dari github
 static Future<String> getArticleContent({required String path}) async {
-  final String token = dotenv.env['GITHUB_TOKEN']!;
+  final String token = dotenv.env['PERSONAL_ACCESS_TOKEN']!;
   final String repo = 'dhikrama/cmsflutter';
   final url = Uri.parse('https://api.github.com/repos/$repo/contents/$path');
 
