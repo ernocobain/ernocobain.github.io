@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,8 +7,9 @@ class GitHubLoginButton extends StatelessWidget {
   const GitHubLoginButton({super.key});
 
   Future<void> _loginWithGitHub(BuildContext context) async {
-    final clientId = dotenv.env['CLIENT_ID']!;
-    final clientSecret = dotenv.env['CLIENT_SECRET']!;
+    final clientId = const String.fromEnvironment('CLIENT_ID');
+    final clientSecret = const String.fromEnvironment('CLIENT_SECRET');
+
     const redirectUri =
         'myapp://callback'; // sama dengan yang kamu daftarkan di GitHub
     const scope = 'repo user'; // sesuaikan dengan kebutuhan kamu
@@ -56,17 +56,17 @@ class GitHubLoginButton extends StatelessWidget {
       }
 
       if (context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Login berhasil!')));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Login berhasil!')));
       }
     } catch (e) {
       debugPrint('Login error: $e');
       if (context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Login gagal: $e')));
-    }
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Login gagal: $e')));
+      }
     }
   }
 

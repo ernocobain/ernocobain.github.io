@@ -3,10 +3,8 @@ import 'package:cms_flutter/views/login_page.dart';
 // import 'package:cms_flutter/views/home_screen.dart';
 // import 'package:cms_flutter/views/editor_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  await dotenv.load();
   runApp(const MyApp());
 }
 

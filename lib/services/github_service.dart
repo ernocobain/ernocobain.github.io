@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class GitHubService {
@@ -85,7 +84,9 @@ class GitHubService {
 
   // Menampilkan article detail dari github
 static Future<String> getArticleContent({required String path}) async {
-  final String token = dotenv.env['GITHUB_TOKEN']!;
+  
+  const token = String.fromEnvironment('API_URL');
+
   final String repo = 'dhikrama/cmsflutter';
   final url = Uri.parse('https://api.github.com/repos/$repo/contents/$path');
 
