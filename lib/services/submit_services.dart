@@ -10,7 +10,7 @@ Future<bool> uploadArticle(
   String content,
   String slug,
 ) async {
-  final String token = dotenv.env['CLIENT_TOKEN']!;
+  final String token = dotenv.env['GITHUB_TOKEN']!;
   final String repo = 'dhikrama/fluttercms';
   final String author = 'dhikrama';
   final String branch = 'origin/main';
